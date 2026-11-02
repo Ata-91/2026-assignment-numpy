@@ -66,8 +66,10 @@ def wallis_product(n_terms):
     """
     if n_terms < 0:
         raise ValueError("n_terms must be a non-negative integer.")
-    
-    k = np.arange(1, n_terms + 1)
-    product = np.prod((4 * k**2) / (4 * k**2 - 1))
-    pi_approximation = 2 * product  
-    return pi_approximation
+
+    product = 1.0
+    for n in range(1, n_terms + 1):
+        product *= (4 * n**2) / (4 * n**2 - 1)
+        
+
+    return product * 2.0
